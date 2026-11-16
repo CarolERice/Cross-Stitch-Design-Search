@@ -19,15 +19,15 @@ How It Works
 
 Running Locally
 
-1. Activate the virtual environment from the project root (~/code/myproject):bash
+1. Activate the virtual environment from the project root (~/code/myproject):
 source ~/.venv/bin/activate
-Use code with caution.
+
 2. Start the Django development server (allowing access from both this computer and devices on the local Wi-Fi network):bash
 python manage.py runserver 0.0.0.0:8000
-Use code with caution.
+
 3. Open in a browser:
-	• On this computer: Go to http://127.0.0
-	• On an iPhone or other local device: Go to http://<computer-local-ip>:8000/ (find the IP with hostname -I).
+	• On this computer: Go to 'http://127.0.0.1:8000'
+	• On an iPhone or other local device: Go to 'http://<computer-local-ip>:8000/' (find the IP with hostname -I).
 4. Updating stitcher assignments: Export or overwrite search_app/current wips.csv at any time—changes appear on the next search without restarting the server.
 
 Background
