@@ -1,0 +1,158 @@
+/* Overall page layout */
+/* Make the page container wide enough for variable number of side-by-side fields depending on screen size */
+/* Fluid page container with your #258989 teal background */
+body {
+    background-color: #258989;
+    color: #010b0b;
+    font-family: Arial, sans-serif;
+    width: 94%;
+    max-width: 100%;
+    margin: 24px auto;
+    padding: 0;
+}
+
+/* Center and style the page title */
+h1 {
+    text-align: center;
+    color: #010b0b;
+    margin-bottom: 20px;
+}
+
+/* Search & filter form container */
+form {
+    background-color: #258989;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #1a365d;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* Force all 6 search labels onto one even row */
+.controls label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 0;
+    min-width: 150px;
+    font-weight: bold;
+    color: #010b0b;
+}
+
+/* Text inputs and dropdowns */
+.controls input[type="text"],
+.controls select {
+    appearance: none;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #010710;
+    padding: 8px 12px;
+    border: 2px solid #1a365d;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+/* Custom dropdown arrow in matching #1a365d navy */
+.controls select {
+    padding-right: 32px;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%231a365d' height='20' viewBox='0 0 24 24' width='20' xmlns='http://w3.org'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+
+/* Focus ring when clicking inside an input or dropdown */
+.controls input[type="text"]:focus,
+.controls select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.35);
+}
+
+/* Centered Search button on its own line below */
+/* Force a dedicated full-width second line and center the button */
+.controls .button-row {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+/* Search button using your #1a365d navy and #010b0b / #010710 scheme */
+.controls .button-row button {
+    width: 180px;
+    background-color: #164753;
+    color: #ffffff;
+    border: 2px solid #010710;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.controls .button-row button:hover {
+    background-color: #010b0b;
+    border-color: #1a365d;
+}
+
+
+/* Pack 1 to 1,000 results into responsive side-by-side columns */
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+/* Compact project cards */
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: #6bbdbb;
+    border: 2px solid #1a365d;
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+
+/* Project name in bold #010b0b */
+.project-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #010b0b;
+}
+
+/* Created date and status in #010710 */
+.project-meta {
+    font-size: 13px;
+    color: #010710;
+}
+
+/* Standard scrollbar styling (works in Firefox and modern Chrome) */
+html {
+    scrollbar-width: auto;
+    scrollbar-color: #1a365d #b8e6e6;
+}
+
+/* Wider, high-contrast scrollbar for Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background: #b8e6e6;
+    border-left: 2px solid #1a365d;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1a365d;
+    border-radius: 8px;
+    border: 3px solid #b8e6e6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #010b0b;
+}

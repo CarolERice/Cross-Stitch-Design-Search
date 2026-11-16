@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cross Stitch Project Search</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" type="text/css" href="{% static 'search_app/style.css' %}?v=9">
+</head>
+<body>
+    <h1>Cross Stitch Designs</h1>
+
+    <form method="GET" class="controls">
+        <label>
+            Project Name
+            <input type="text" name="q" value="{{ query }}" placeholder="All projects...">
+        </label>
+
+        <label>
+            Status
+            <select name="finished">
+                <option value="both" {% if finished == 'both' %}selected{% endif %}>Both</option>
+                <option value="no" {% if finished == 'no' %}selected{% endif %}>WIP (Unfinished)</option>
+                <option value="yes" {% if finished == 'yes' %}selected{% endif %}>Finished</option>
+            </select>
+        </label>
+
+        <label>
+            Date (YYMMDD)
+            <input type="text" name="date" value="{{ date }}" placeholder="e.g. 261115" maxlength="6">
+        </label>
+
+        <label>
+            Oldest First (Priority)
+            <select name="priority">
+                <option value="no" {% if priority == 'no' %}selected{% endif %}>No (A–Z)</option>
+                <option value="yes" {% if priority == 'yes' %}selected{% endif %}>Yes (Oldest First)</option>
+            </select>
+        </label>
+        <label>
+            Stitcher Status
+            <select name="assigned">
+                <option value="all" {% if assigned == 'all' %}selected{% endif %}>All</option>
+                <option value="yes" {% if assigned == 'yes' %}selected{% endif %}>Has Stitcher</option>
+                <option value="no" {% if assigned == 'no' %}selected{% endif %}>No Stitcher</option>
+            </select>
+        </label>
+        <label>
+            Stitcher Name
+            <input type="text" name="stitcher" value="{{ stitcher }}" placeholder="e.g. chr...">
+        </label>
+
+        <div class="button-row">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <p>Showing <strong>{{ results|length }}</strong> project{{ results|length|pluralize }}.</p>
+
+    <div class="results">
+        {% for item in results %}
+            <div class="card">
+                <div class="project-name">{{ item.name }}</div>
+                <div class="project-meta">Created: {{ item.created_date }}</div>
+                <div class="project-meta">Status: {% if item.finished %}Finished{% else %}WIP{% endif %}</div>
+                {% if item.who_has %}
+                    <div class="project-meta">Who has it: {{ item.who_has }}</div>
+                {% endif %}
+            </div>
+            {% empty %}
+            <div class="card">No matching cross-stitch projects found.</div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
