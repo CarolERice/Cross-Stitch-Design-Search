@@ -1,5 +1,8 @@
 Cross-Stitch Design Search Utility
 
+> **Update:** Want a standalone desktop window with automatic backend startup? [Check out the Electron + JavaScript version here](https://github.com/CarolERice/Cross-Stitch-Design-Search-with-Electron-wrapper-and-js).
+
+
 A utility to read all the Cross-Stitch Designs I have created and search through them in a variety of ways. It pairs directory scanning with a CSV tracking sheet so I can quickly check design status and model stitcher assignments from my desktop or phone.
 
 Features
